@@ -20,3 +20,11 @@ public class Q5_EvenOddFromList {
         sc.close();
     }
 }
+
+/*
+Output:
+Enter number of elements: 6
+Enter elements: 1 2 3 4 5 6
+Even numbers: 2 4 6 
+Odd numbers: 1 3 5 
+*/

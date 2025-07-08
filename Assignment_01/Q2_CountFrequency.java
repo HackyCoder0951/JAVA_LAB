@@ -22,3 +22,12 @@ public class Q2_CountFrequency {
         }
     }
 }
+
+/*
+Output:
+Enter number of elements: 6
+Enter elements: 1 -2 0 3 -4 0
+Positive: 2
+Negative: 2
+Zero: 2
+*/

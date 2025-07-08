@@ -34,3 +34,11 @@ public class Q6_FactorialAndPalindrome {
         sc.close();
     }
 }
+
+/*
+Output:
+Enter a number: 5
+Factorial (Iterative): 120
+Factorial (Recursive): 120
+Is Palindrome: false
+*/

@@ -23,3 +23,10 @@ public class Q4_SumOfDigits {
         sc.close();
     }
 }
+
+/*
+Output:
+Enter a number: 1234
+Sum of digits (Iterative): 10
+Sum of digits (Recursive): 10
+*/

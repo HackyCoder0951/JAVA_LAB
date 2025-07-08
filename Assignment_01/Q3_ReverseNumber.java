@@ -23,3 +23,10 @@ public class Q3_ReverseNumber {
         sc.close();
     }
 }
+
+/*
+Output:
+Enter a number: 1234
+Reverse (Iterative): 4321
+Reverse (Recursive): 4321
+*/

@@ -24,3 +24,11 @@ public class Q8_MaxMinFromList {
         sc.close();
     }
 }
+
+/*
+Output:
+Enter number of elements: 5
+Enter elements: 3 7 2 9 5
+Max: 9
+Min: 2
+*/

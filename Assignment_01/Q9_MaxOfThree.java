@@ -13,3 +13,9 @@ public class Q9_MaxOfThree {
         sc.close();
     }
 }
+
+/*
+Output:
+Enter three numbers: 4 9 2
+Maximum: 9
+*/

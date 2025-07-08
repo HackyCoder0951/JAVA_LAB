@@ -20,3 +20,11 @@ public class Q10_FrequencyOfElement {
         sc.close();
     }
 }
+
+/*
+Output:
+Enter number of elements: 6
+Enter elements: 1 2 3 2 4 2
+Enter element to find frequency: 2
+Frequency of 2: 3
+*/

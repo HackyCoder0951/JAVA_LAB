@@ -83,46 +83,46 @@ public class LabUtils {
     }
 
     // Q7: Patterns
-    /**
-     * Pattern 1: Left-aligned pyramid with spaces and stars (e.g. for n=5)
-     *      *
-     *     * *
-     *    * * *
-     *   * * * *
-     *  * * * * *
-     */
-    public static void pattern1(int n) {
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= n - i; j++) System.out.print(" ");
-            for (int j = 1; j <= i; j++) System.out.print("* ");
-            System.out.println();
-        }
-    }
+        /**
+         * Pattern 1: Left-aligned pyramid with spaces and stars (e.g. for n=5)
+         *      *
+         *     * *
+         *    * * *
+         *   * * * *
+         *  * * * * *
+         */
+            public static void pattern1(int n) {
+                for (int i = 1; i <= n; i++) {
+                    for (int j = 1; j <= n - i; j++) System.out.print(" ");
+                    for (int j = 1; j <= i; j++) System.out.print("* ");
+                    System.out.println();
+                }
+            }
 
-    /**
-     * Pattern 2: Left-aligned triangle of stars (e.g. for n=5)
-     * *
-     * **
-     * ***
-     * ****
-     * *****
-     */
-    public static void pattern2(int n) {
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= i; j++) System.out.print("*");
-            System.out.println();
-        }
-    }
+        /**
+         * Pattern 2: Left-aligned triangle of stars (e.g. for n=5)
+         * *
+         * **
+         * ***
+         * ****
+         * *****
+         */
+            public static void pattern2(int n) {
+                for (int i = 1; i <= n; i++) {
+                    for (int j = 1; j <= i; j++) System.out.print("*");
+                    System.out.println();
+                }
+            }
 
-    /**
-     * Pattern 3: Same as pattern2 (for assignment completeness)
-     */
-    public static void pattern3(int n) {
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= i; j++) System.out.print("*");
-            System.out.println();
-        }
-    }
+        /**
+         * Pattern 3: Same as pattern2 (for assignment completeness)
+         */
+            public static void pattern3(int n) {
+                for (int i = 1; i <= n; i++) {
+                    for (int j = 1; j <= i; j++) System.out.print("*");
+                    System.out.println();
+                }
+            }
 
 
     // Q8: Max or min from list
