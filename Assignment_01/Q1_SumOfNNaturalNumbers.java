@@ -1,7 +1,7 @@
 package Assignment_01;
 import java.util.Scanner;
 
-public class SumOfNNaturalNumbers {
+public class Q1_SumOfNNaturalNumbers {
     // Recursive function to calculate sum
     static int sum(int n) {
         if (n <= 1)

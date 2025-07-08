@@ -1,6 +1,6 @@
 package Assignment_01;
 
-public class DrawPatterns {
+public class Q7_DrawPatterns {
     static void pattern1(int n) {
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= n - i; j++) System.out.print(" ");

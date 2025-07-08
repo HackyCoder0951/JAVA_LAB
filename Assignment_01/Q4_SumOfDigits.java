@@ -1,7 +1,7 @@
 package Assignment_01;
 import java.util.Scanner;
 
-public class SumOfDigits {
+public class Q4_SumOfDigits {
     // Recursive function to calculate sum of digits
     static int sumDigits(int n) {
         if (n == 0) return 0;

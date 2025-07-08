@@ -1,7 +1,7 @@
 package Assignment_01;
 import java.util.Scanner;
 
-public class FactorialAndPalindrome {
+public class Q6_FactorialAndPalindrome {
     // Recursive factorial
     static long factorial(int n) {
         if (n <= 1) return 1;

@@ -1,7 +1,7 @@
 package Assignment_01;
 import java.util.Scanner;
 
-public class MaxOrMinFromList {
+public class Q8_MaxOrMinFromList {
     static int findMax(int[] arr) {
         int max = arr[0];
         for (int num : arr) if (num > max) max = num;

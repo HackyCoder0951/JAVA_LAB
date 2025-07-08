@@ -2,7 +2,7 @@ package Assignment_01;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class FrequencyOfElements {
+public class Q10_FrequencyOfElements {
     static void countFrequency(int[] arr) {
         HashMap<Integer, Integer> freq = new HashMap<>();
         for (int num : arr) {

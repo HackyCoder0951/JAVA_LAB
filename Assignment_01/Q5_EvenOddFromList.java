@@ -1,17 +1,14 @@
 package Assignment_01;
 import java.util.Scanner;
 
-public class FrequencyCount {
-    static void countFrequencies(int[] arr) {
-        int pos = 0, neg = 0, zero = 0;
+public class Q5_EvenOddFromList {
+    static void printEvenOdd(int[] arr) {
         for (int num : arr) {
-            if (num > 0) pos++;
-            else if (num < 0) neg++;
-            else zero++;
+            if (num % 2 == 0)
+                System.out.println(num + " is Even");
+            else
+                System.out.println(num + " is Odd");
         }
-        System.out.println("Positive: " + pos);
-        System.out.println("Negative: " + neg);
-        System.out.println("Zero: " + zero);
     }
 
     public static void main(String[] args) {
@@ -23,7 +20,7 @@ public class FrequencyCount {
         for (int i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
         }
-        countFrequencies(arr);
+        printEvenOdd(arr);
         sc.close();
     }
 }

@@ -1,7 +1,7 @@
 package Assignment_01;
 import java.util.Scanner;
 
-public class ReverseNumber {
+public class Q3_ReverseNumber {
     static int reverse(int n) {
         int rev = 0;
         while (n != 0) {
