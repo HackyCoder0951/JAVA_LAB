@@ -1,0 +1,26 @@
+package Assignment_01;
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class FrequencyOfElements {
+    static void countFrequency(int[] arr) {
+        HashMap<Integer, Integer> freq = new HashMap<>();
+        for (int num : arr) {
+            freq.put(num, freq.getOrDefault(num, 0) + 1);
+        }
+        System.out.println("Element : Frequency");
+        for (int key : freq.keySet()) {
+            System.out.println(key + " : " + freq.get(key));
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of elements: ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        System.out.println("Enter the numbers:");
+        for (int i = 0; i < n; i++) arr[i] = sc.nextInt();
+        countFrequency(arr);
+        sc.close();
+    }
+}

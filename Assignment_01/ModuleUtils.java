@@ -1,7 +1,7 @@
 package Assignment_01;
 import java.util.Arrays;
 
-public class LabUtils {
+public class ModuleUtils {
     // Q1: Sum of N natural numbers
     public static int sumIterative(int n) {
         int sum = 0;
