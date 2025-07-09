@@ -24,3 +24,13 @@ public class Q5_EvenOddFromList {
         sc.close();
     }
 }
+
+/* Sample Output:
+Enter number of elements: 4
+Enter the numbers:
+2 7 0 5
+2 is Even
+7 is Odd
+0 is Even
+5 is Odd
+*/

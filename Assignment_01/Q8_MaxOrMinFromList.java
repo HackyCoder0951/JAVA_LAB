@@ -28,3 +28,11 @@ public class Q8_MaxOrMinFromList {
         sc.close();
     }
 }
+
+/* Sample Output:
+Enter number of elements: 4
+Enter the numbers:
+5 2 9 1
+Find (1) Max or (2) Min? Enter 1 or 2: 1
+Maximum: 9
+*/

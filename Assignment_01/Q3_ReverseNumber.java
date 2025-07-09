@@ -19,3 +19,8 @@ public class Q3_ReverseNumber {
         sc.close();
     }
 }
+
+/* Sample Output:
+Enter a number: 1234
+Reversed number: 4321
+*/

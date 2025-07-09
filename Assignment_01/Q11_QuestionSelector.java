@@ -117,3 +117,27 @@ public class Q11_QuestionSelector {
         sc.close();
     }
 }
+
+/* Sample Output:
+--- Java Lab Assignment 1: Question Selector ---
+1. Sum of N natural numbers
+2. Frequency of positive, negative, zero
+3. Reverse a number
+4. Sum of digits of a number
+5. Even or odd from the list
+6. Factorial & palindrome check
+7. Draw patterns
+8. Max or min from the list
+9. Maximum of three numbers
+10. Frequency of element in the list
+0. Exit
+Select a question (0-10): 1
+Enter N: 5
+Sum (iterative): 15
+Sum (recursive): 15
+
+--- Java Lab Assignment 1: Question Selector ---
+...
+Select a question (0-10): 0
+Exiting. Thank you!
+*/

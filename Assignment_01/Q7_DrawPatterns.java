@@ -35,3 +35,24 @@ public class Q7_DrawPatterns {
         pattern3(n);
     }
 }
+
+/* Sample Output:
+Pattern 1:
+    * 
+   * * 
+  * * * 
+ * * * * 
+* * * * * 
+Pattern 2:
+    *
+   **
+  ***
+ ****
+*****
+Pattern 3:
+    *
+   **
+  ***
+ ****
+*****
+*/

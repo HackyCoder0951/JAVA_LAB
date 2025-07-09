@@ -15,3 +15,8 @@ public class Q9_MaxOfThreeNumbers {
         sc.close();
     }
 }
+
+/* Sample Output:
+Enter three numbers: 7 12 5
+Maximum: 12
+*/

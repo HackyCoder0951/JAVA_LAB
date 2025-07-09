@@ -26,3 +26,9 @@ public class Q6_FactorialAndPalindrome {
         sc.close();
     }
 }
+
+/* Sample Output:
+Enter a number: 121
+Factorial: 146579293561295836544000000
+Is Palindrome: true
+*/

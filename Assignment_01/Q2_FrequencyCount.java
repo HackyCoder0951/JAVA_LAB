@@ -27,3 +27,12 @@ public class Q2_FrequencyCount {
         sc.close();
     }
 }
+
+/* Sample Output:
+Enter number of elements: 5
+Enter the numbers:
+1 -2 0 3 0
+Positive: 2
+Negative: 1
+Zero: 2
+*/

@@ -12,8 +12,13 @@ public class Q1_SumOfNNaturalNumbers {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter N: ");
-        int n = sc.nextInt();
+            int n = sc.nextInt();
         System.out.println("Sum of first " + n + " natural numbers: " + sum(n));
         sc.close();
     }
 }
+
+/* Sample Output:
+Enter N: 5
+Sum of first 5 natural numbers: 15
+*/

@@ -24,3 +24,13 @@ public class Q10_FrequencyOfElements {
         sc.close();
     }
 }
+
+/* Sample Output:
+Enter number of elements: 6
+Enter the numbers:
+1 2 2 3 1 2
+Element : Frequency
+1 : 2
+2 : 3
+3 : 1
+*/
