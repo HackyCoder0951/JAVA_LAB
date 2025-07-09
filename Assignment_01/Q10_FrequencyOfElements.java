@@ -25,7 +25,7 @@ public class Q10_FrequencyOfElements {
     }
 }
 
-/* Sample Output:
+/* Output:
 Enter number of elements: 6
 Enter the numbers:
 1 2 2 3 1 2

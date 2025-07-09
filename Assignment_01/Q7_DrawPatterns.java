@@ -36,7 +36,7 @@ public class Q7_DrawPatterns {
     }
 }
 
-/* Sample Output:
+/* Output:
 Pattern 1:
     * 
    * * 

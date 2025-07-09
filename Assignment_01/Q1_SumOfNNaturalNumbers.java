@@ -18,7 +18,7 @@ public class Q1_SumOfNNaturalNumbers {
     }
 }
 
-/* Sample Output:
+/* Output:
 Enter N: 5
 Sum of first 5 natural numbers: 15
 */

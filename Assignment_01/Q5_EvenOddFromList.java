@@ -25,7 +25,7 @@ public class Q5_EvenOddFromList {
     }
 }
 
-/* Sample Output:
+/* Output:
 Enter number of elements: 4
 Enter the numbers:
 2 7 0 5

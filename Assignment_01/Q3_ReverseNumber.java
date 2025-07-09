@@ -20,7 +20,7 @@ public class Q3_ReverseNumber {
     }
 }
 
-/* Sample Output:
+/* Output:
 Enter a number: 1234
 Reversed number: 4321
 */

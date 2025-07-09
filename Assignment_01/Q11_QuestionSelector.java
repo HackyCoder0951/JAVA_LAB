@@ -118,7 +118,7 @@ public class Q11_QuestionSelector {
     }
 }
 
-/* Sample Output:
+/* Output:
 --- Java Lab Assignment 1: Question Selector ---
 1. Sum of N natural numbers
 2. Frequency of positive, negative, zero
