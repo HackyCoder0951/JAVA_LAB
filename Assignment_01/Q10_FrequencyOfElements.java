@@ -15,17 +15,26 @@ public class Q10_FrequencyOfElements {
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter number of elements: ");
-        int n = sc.nextInt();
-        int[] arr = new int[n];
-        System.out.println("Enter the numbers:");
-        for (int i = 0; i < n; i++) arr[i] = sc.nextInt();
-        countFrequency(arr);
-        sc.close();
+        try {
+            System.out.print("Enter number of elements: ");
+            int n = sc.nextInt();
+            if (n <= 0) {
+                System.out.println("Error: Please enter a positive integer for the number of elements.");
+            } else {
+                int[] arr = new int[n];
+                System.out.println("Enter the numbers:");
+                for (int i = 0; i < n; i++) arr[i] = sc.nextInt();
+                countFrequency(arr);
+            }
+        } catch (Exception e) {
+            System.out.println("Error: Invalid input. Please enter valid integers.");
+        } finally {
+            sc.close();
+        }
     }
 }
 
-/* Output:
+/* Sample Output:
 Enter number of elements: 6
 Enter the numbers:
 1 2 2 3 1 2
@@ -33,4 +42,10 @@ Element : Frequency
 1 : 2
 2 : 3
 3 : 1
+
+Enter number of elements: -3
+Error: Please enter a positive integer for the number of elements.
+
+Enter number of elements: abc
+Error: Invalid input. Please enter valid integers.
 */
