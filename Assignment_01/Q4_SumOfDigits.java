@@ -22,7 +22,7 @@ public class Q4_SumOfDigits {
     }
 }
 
-/* Sample Output:
+/* Output:
 Enter a number: 1234
 Sum of digits: 10
 

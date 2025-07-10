@@ -37,7 +37,7 @@ public class Q2_FrequencyCount {
     }
 }
 
-/* Sample Output:
+/* Output:
 Enter number of elements: 5
 Enter the numbers:
 1 -2 0 3 0

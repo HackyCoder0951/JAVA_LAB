@@ -1,5 +1,7 @@
 package Assignment_01;
 
+import java.util.Scanner;
+
 public class Q7_DrawPatterns {
     static void pattern1(int n) {
         for (int i = 1; i <= n; i++) {
@@ -42,6 +44,7 @@ public class Q7_DrawPatterns {
             }
         } catch (Exception e) {
             System.out.println("Error: Invalid input. Please enter a valid integer.");
+            sc.next(); // Clear the invalid input
         } finally {
             sc.close();
         }

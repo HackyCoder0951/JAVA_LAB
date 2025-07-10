@@ -40,7 +40,7 @@ public class Q8_MaxOrMinFromList {
     }
 }
 
-/* Sample Output:
+/* Output:
 Enter number of elements: 4
 Enter the numbers:
 5 2 9 1
