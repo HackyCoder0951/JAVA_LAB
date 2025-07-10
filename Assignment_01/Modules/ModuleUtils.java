@@ -1,4 +1,5 @@
-package Assignment_01;
+package Assignment_01.Modules;
+
 import java.util.Arrays;
 
 public class ModuleUtils {
