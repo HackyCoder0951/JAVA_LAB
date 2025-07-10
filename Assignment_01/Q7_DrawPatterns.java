@@ -26,17 +26,30 @@ public class Q7_DrawPatterns {
     }
 
     public static void main(String[] args) {
-        int n = 5;
-        System.out.println("Pattern 1:");
-        pattern1(n);
-        System.out.println("Pattern 2:");
-        pattern2(n);
-        System.out.println("Pattern 3:");
-        pattern3(n);
+        Scanner sc = new Scanner(System.in);
+        try {
+            System.out.print("Enter n for patterns: ");
+            int n = sc.nextInt();
+            if (n <= 0) {
+                System.out.println("Error: Please enter a positive integer for n.");
+            } else {
+                System.out.println("Pattern 1:");
+                pattern1(n);
+                System.out.println("Pattern 2:");
+                pattern2(n);
+                System.out.println("Pattern 3:");
+                pattern3(n);
+            }
+        } catch (Exception e) {
+            System.out.println("Error: Invalid input. Please enter a valid integer.");
+        } finally {
+            sc.close();
+        }
     }
 }
 
-/* Output:
+/* Sample Output:
+Enter n for patterns: 5
 Pattern 1:
     * 
    * * 
@@ -55,4 +68,10 @@ Pattern 3:
   ***
  ****
 *****
+
+Enter n for patterns: -2
+Error: Please enter a positive integer for n.
+
+Enter n for patterns: abc
+Error: Invalid input. Please enter a valid integer.
 */

@@ -13,19 +13,28 @@ public class Q5_EvenOddFromList {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter number of elements: ");
-        int n = sc.nextInt();
-        int[] arr = new int[n];
-        System.out.println("Enter the numbers:");
-        for (int i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
+        try {
+            System.out.print("Enter number of elements: ");
+            int n = sc.nextInt();
+            if (n <= 0) {
+                System.out.println("Error: Please enter a positive integer for the number of elements.");
+            } else {
+                int[] arr = new int[n];
+                System.out.println("Enter the numbers:");
+                for (int i = 0; i < n; i++) {
+                    arr[i] = sc.nextInt();
+                }
+                printEvenOdd(arr);
+            }
+        } catch (Exception e) {
+            System.out.println("Error: Invalid input. Please enter valid integers.");
+        } finally {
+            sc.close();
         }
-        printEvenOdd(arr);
-        sc.close();
     }
 }
 
-/* Output:
+/* Sample Output:
 Enter number of elements: 4
 Enter the numbers:
 2 7 0 5
@@ -33,4 +42,10 @@ Enter the numbers:
 7 is Odd
 0 is Even
 5 is Odd
+
+Enter number of elements: -1
+Error: Please enter a positive integer for the number of elements.
+
+Enter number of elements: abc
+Error: Invalid input. Please enter valid integers.
 */

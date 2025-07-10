@@ -13,14 +13,22 @@ public class Q3_ReverseNumber {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter a number: ");
-        int n = sc.nextInt();
-        System.out.println("Reversed number: " + reverse(n));
-        sc.close();
+        try {
+            System.out.print("Enter a number: ");
+            int n = sc.nextInt();
+            System.out.println("Reversed number: " + reverse(n));
+        } catch (Exception e) {
+            System.out.println("Error: Invalid input. Please enter a valid integer.");
+        } finally {
+            sc.close();
+        }
     }
 }
 
-/* Output:
+/* Sample Output:
 Enter a number: 1234
 Reversed number: 4321
+
+Enter a number: abc
+Error: Invalid input. Please enter a valid integer.
 */

@@ -10,14 +10,22 @@ public class Q4_SumOfDigits {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter a number: ");
-        int n = sc.nextInt();
-        System.out.println("Sum of digits: " + sumDigits(n));
-        sc.close();
+        try {
+            System.out.print("Enter a number: ");
+            int n = sc.nextInt();
+            System.out.println("Sum of digits: " + sumDigits(n));
+        } catch (Exception e) {
+            System.out.println("Error: Invalid input. Please enter a valid integer.");
+        } finally {
+            sc.close();
+        }
     }
 }
 
-/* Output:
+/* Sample Output:
 Enter a number: 1234
 Sum of digits: 10
+
+Enter a number: xyz
+Error: Invalid input. Please enter a valid integer.
 */

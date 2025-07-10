@@ -19,16 +19,31 @@ public class Q6_FactorialAndPalindrome {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter a number: ");
-        int n = sc.nextInt();
-        System.out.println("Factorial: " + factorial(n));
-        System.out.println("Is Palindrome: " + isPalindrome(n));
-        sc.close();
+        try {
+            System.out.print("Enter a number: ");
+            int n = sc.nextInt();
+            if (n < 0) {
+                System.out.println("Error: Please enter a non-negative integer.");
+            } else {
+                System.out.println("Factorial: " + factorial(n));
+                System.out.println("Is Palindrome: " + isPalindrome(n));
+            }
+        } catch (Exception e) {
+            System.out.println("Error: Invalid input. Please enter a valid integer.");
+        } finally {
+            sc.close();
+        }
     }
 }
 
-/* Output:
+/* Sample Output:
 Enter a number: 121
 Factorial: 146579293561295836544000000
 Is Palindrome: true
+
+Enter a number: -5
+Error: Please enter a non-negative integer.
+
+Enter a number: xyz
+Error: Invalid input. Please enter a valid integer.
 */
