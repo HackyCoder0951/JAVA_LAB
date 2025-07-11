@@ -21,7 +21,14 @@ public class Q6_FactorialAndPalindrome {
         Scanner sc = new Scanner(System.in);
         try {
             System.out.print("Enter a number: ");
-            int n = sc.nextInt();
+            String nStr = sc.next();
+            int n = 0;
+            try {
+                n = Integer.parseInt(nStr);
+            } catch (NumberFormatException ex) {
+                System.out.println("Error: Number out of range. Please enter a valid integer within the allowed range.");
+                return;
+            }
             if (n < 0) {
                 System.out.println("Error: Please enter a non-negative integer.");
             } else {

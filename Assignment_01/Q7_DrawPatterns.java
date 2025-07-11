@@ -31,9 +31,19 @@ public class Q7_DrawPatterns {
         Scanner sc = new Scanner(System.in);
         try {
             System.out.print("Enter n for patterns: ");
-            int n = sc.nextInt();
+            String nStr = sc.next();
+            int n = 0;
+            int MAX_LIMIT = 1000;
+            try {
+                n = Integer.parseInt(nStr);
+            } catch (NumberFormatException ex) {
+                System.out.println("Error: Number out of range. Please enter a valid integer within the allowed range.");
+                return;
+            }
             if (n <= 0) {
                 System.out.println("Error: Please enter a positive integer for n.");
+            } else if (n > MAX_LIMIT) {
+                System.out.println("Error: n cannot exceed " + MAX_LIMIT + ".");
             } else {
                 System.out.println("Pattern 1:");
                 pattern1(n);

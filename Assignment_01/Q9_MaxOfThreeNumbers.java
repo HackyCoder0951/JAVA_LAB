@@ -9,9 +9,18 @@ public class Q9_MaxOfThreeNumbers {
         Scanner sc = new Scanner(System.in);
         try {
             System.out.print("Enter three numbers: ");
-            int a = sc.nextInt();
-            int b = sc.nextInt();
-            int c = sc.nextInt();
+            String aStr = sc.next();
+            String bStr = sc.next();
+            String cStr = sc.next();
+            int a, b, c;
+            try {
+                a = Integer.parseInt(aStr);
+                b = Integer.parseInt(bStr);
+                c = Integer.parseInt(cStr);
+            } catch (NumberFormatException ex) {
+                System.out.println("Error: Number out of range. Please enter valid integers within the allowed range.");
+                return;
+            }
             System.out.println("Maximum: " + maxOfThree(a, b, c));
         } catch (Exception e) {
             System.out.println("Error: Invalid input. Please enter three valid integers.");
