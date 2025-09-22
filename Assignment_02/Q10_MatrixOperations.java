@@ -5,9 +5,19 @@ class Q10_MatrixOperations {
         Scanner sc = new Scanner(System.in);
 
         // Predefined 2x2 matrices
-        int[][] A = {{1, 2}, {3, 4}};
-        int[][] B = {{5, 6}, {7, 8}};
+        int[][] A = new int[2][2];
+        int[][] B = new int[2][2];
         int[][] result = new int[2][2];
+
+        System.out.println("Enter elements of Matrix A (2x2):");
+        for (int i = 0; i < 2; i++)
+            for (int j = 0; j < 2; j++)
+            A[i][j] = sc.nextInt();
+
+        System.out.println("Enter elements of Matrix B (2x2):");
+        for (int i = 0; i < 2; i++)
+            for (int j = 0; j < 2; j++)
+            B[i][j] = sc.nextInt();
 
         while (true) {
             System.out.println("\nMenu:");
@@ -39,6 +49,7 @@ class Q10_MatrixOperations {
                     }
                     break;
                 case 4:
+                    sc.close();
                     System.exit(0);
             }
 
@@ -48,7 +59,35 @@ class Q10_MatrixOperations {
                 for (int val : row) System.out.print(val + " ");
                 System.out.println();
             }
-            sc.close();
         }
     }
 }
+
+/*  Input/Output Example:
+    Enter elements of Matrix A (2x2):
+    1 2
+    3 4
+    Enter elements of Matrix B (2x2):
+    5 6
+    7 8
+
+    Menu:
+    1. Addition
+    2. Subtraction
+    3. Multiplication
+    4. Exit
+    Choose an option: 1
+    Result:
+    6 8 
+    10 12 
+
+    Menu:
+    1. Addition
+    2. Subtraction
+    3. Multiplication
+    4. Exit
+    Choose an option: 3
+    Result:
+    19 22 
+    43 50 
+*/
