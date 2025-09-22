@@ -19,7 +19,8 @@ public class Q1_StringAnalysis {
         sc.close();
         // Count words based on whitespace separation
         int words = text.trim().isEmpty() ? 0 : text.trim().split("\\s+").length;
-
+        // Output the results
+        System.out.println("\nString Analysis:");
         System.out.println("Uppercase Letters: " + upper);
         System.out.println("Lowercase Letters: " + lower);
         System.out.println("Digits: " + digits);
@@ -28,6 +29,14 @@ public class Q1_StringAnalysis {
     }
 }
 
-
-
-
+/*  Input/Output Example:
+    Enter a line of text:
+    Hello World 123
+    
+    String Analysis:
+    Uppercase Letters: 2
+    Lowercase Letters: 8
+    Digits: 3
+    Whitespace Characters: 2
+    Number of Words: 3
+*/
