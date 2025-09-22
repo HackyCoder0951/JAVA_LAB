@@ -26,3 +26,21 @@ class Q2_PasswordValidator {
         }
     }
 }
+
+/*  Input/Output Example:
+    Enter password: Pass1234
+    Valid Password
+
+    Enter password: pass
+    Invalid Password: Must contain at least 8 characters with at least one uppercase, lowercase, and digit.
+
+    Enter password: PASSWORD1
+    Invalid Password: Must contain at least 8 characters with at least one uppercase, lowercase, and digit.
+
+    Enter password: PassWord
+    Invalid Password: Must contain at least 8 characters with at least one uppercase, lowercase, and digit.
+
+    Enter password: 12345678
+    Invalid Password: Must contain at least 8 characters with at least one uppercase, lowercase, and digit.
+
+*/
