@@ -28,3 +28,12 @@ class Q4_BinarySearch {
         if (!found) System.out.println("Element not found");
     }
 }
+
+/*  Input/Output Example:
+    Enter number to search: 10
+    Element found at index 4
+*/
+/*  Input/Output Example:
+    Enter number to search: 5
+    Element not found
+*/
