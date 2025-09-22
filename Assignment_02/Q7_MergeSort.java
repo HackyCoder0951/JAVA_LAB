@@ -31,9 +31,25 @@ class Q7_MergeSort {
     }
 
     public static void main(String[] args) {
-        int[] arr = {12, 11, 13, 5, 6, 7};
+        java.util.Scanner sc = new java.util.Scanner(System.in);
+        System.out.print("Enter number of elements: ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        System.out.println("Enter " + n + " elements:");
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
         mergeSort(arr, 0, arr.length - 1);
         System.out.println("Sorted array:");
         for (int val : arr) System.out.print(val + " ");
+        sc.close();
     }
 }
+
+/*  Input/Output Example:
+    Enter number of elements: 5
+    Enter 5 elements:
+    38 27 43 3 9
+    Sorted array:
+    3 9 27 38 43 
+*/
