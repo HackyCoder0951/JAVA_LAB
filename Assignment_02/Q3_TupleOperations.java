@@ -29,3 +29,10 @@ class Q3_TupleOperations {
         System.out.println("Converted Map: " + map);
     }
 }
+
+/*  Input/Output Example:
+    Repeated Items: [apple, banana]
+    Contains 'banana': true
+    After removing 'cherry': [apple, banana, apple, banana, date]
+    Converted Map: {0=apple, 1=banana, 2=apple, 3=banana, 4=date}
+*/
