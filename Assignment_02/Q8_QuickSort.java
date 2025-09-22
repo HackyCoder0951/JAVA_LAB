@@ -25,9 +25,26 @@ class Q8_QuickSort {
     }
 
     public static void main(String[] args) {
-        int[] arr = {10, 7, 8, 9, 1, 5};
+        java.util.Scanner sc = new java.util.Scanner(System.in);
+        System.out.print("Enter number of elements: ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        System.out.println("Enter " + n + " elements:");
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
         quickSort(arr, 0, arr.length - 1);
         System.out.println("Sorted array:");
         for (int val : arr) System.out.print(val + " ");
+        sc.close();
+    
     }
 }
+
+/*  Input/Output Example:
+    Enter number of elements: 5
+    Enter 5 elements:
+    10 7 8 9 1
+    Sorted array:
+    1 7 8 9 10 
+*/
