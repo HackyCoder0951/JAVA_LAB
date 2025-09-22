@@ -2,7 +2,10 @@
 import java.util.*;
 class Q3_TupleOperations {
     public static void main(String[] args) {
-        List<String> list = new ArrayList<>(Arrays.asList("apple", "banana", "apple", "cherry", "banana", "date"));
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter items separated by spaces: ");
+        String input = sc.nextLine();
+        List<String> list = new ArrayList<>(Arrays.asList(input.split("\\s+")));
 
         // Find repeated items
         Set<String> seen = new HashSet<>();
@@ -27,12 +30,13 @@ class Q3_TupleOperations {
             map.put(i, list.get(i));
         }
         System.out.println("Converted Map: " + map);
+        sc.close();
     }
 }
-
 /*  Input/Output Example:
-    Repeated Items: [apple, banana]
+    Enter items separated by spaces: apple banana cherry apple date banana
+    Repeated Items: [banana, apple]
     Contains 'banana': true
-    After removing 'cherry': [apple, banana, apple, banana, date]
-    Converted Map: {0=apple, 1=banana, 2=apple, 3=banana, 4=date}
+    After removing 'cherry': [apple, banana, apple, date, banana]
+    Converted Map: {0=apple, 1=banana, 2=apple, 3=date, 4=banana}
 */
