@@ -1,17 +1,23 @@
 package Assignment_04;
+
 import java.util.*;
 
 public class Q2_CacheSimulator {
 
     static abstract class Cache {
         final int cacheSize; // number of lines
-        Cache(int size) { this.cacheSize = size; }
+
+        Cache(int size) {
+            this.cacheSize = size;
+        }
+
         abstract boolean fetch(int address); // returns true if hit
     }
 
     // Direct mapping: line = address % cacheSize
     static class DirectMappedCache extends Cache {
         Integer[] lines;
+
         DirectMappedCache(int size) {
             super(size);
             lines = new Integer[size];
@@ -32,9 +38,11 @@ public class Q2_CacheSimulator {
         }
     }
 
-    // Fully associative with LRU replacement using LinkedHashMap (access-order = true)
+    // Fully associative with LRU replacement using LinkedHashMap (access-order =
+    // true)
     static class AssociativeCache extends Cache {
         LinkedHashMap<Integer, Integer> map; // key=address, value=dummy
+
         AssociativeCache(int size) {
             super(size);
             map = new LinkedHashMap<>(size, 0.75f, true);
@@ -60,20 +68,27 @@ public class Q2_CacheSimulator {
     }
 
     public static void main(String[] args) {
-        int[] addresses = {0, 4, 1, 0, 8, 4, 12, 1, 4, 0};
+        int[] addresses = { 0, 4, 1, 0, 8, 4, 12, 1, 4, 0 };
         System.out.println("=== Direct Mapped Cache (size 4) ===");
         Cache d = new DirectMappedCache(4);
-        int hits=0, misses=0;
+        int hits = 0, misses = 0;
         for (int a : addresses) {
-            if (d.fetch(a)) hits++; else misses++;
+            if (d.fetch(a))
+                hits++;
+            else
+                misses++;
         }
         System.out.printf("Direct: hits=%d misses=%d%n%n", hits, misses);
 
         System.out.println("=== Associative Cache (size 4) ===");
         Cache assoc = new AssociativeCache(4);
-        hits=0; misses=0;
+        hits = 0;
+        misses = 0;
         for (int a : addresses) {
-            if (assoc.fetch(a)) hits++; else misses++;
+            if (assoc.fetch(a))
+                hits++;
+            else
+                misses++;
         }
         System.out.printf("Associative: hits=%d misses=%d%n", hits, misses);
     }
