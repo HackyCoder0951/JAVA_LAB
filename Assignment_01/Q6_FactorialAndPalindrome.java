@@ -3,9 +3,12 @@ import java.util.Scanner;
 
 public class Q6_FactorialAndPalindrome {
     // Recursive factorial
-    static long factorial(int n) {
-        if (n <= 1) return 1;
-        return n * factorial(n - 1);
+    // The current logic uses 'long' for factorial, which will overflow for large n.
+    // For large factorials, use java.math.BigInteger.
+
+    static java.math.BigInteger factorial(int n) {
+        if (n <= 1) return java.math.BigInteger.ONE;
+        return java.math.BigInteger.valueOf(n).multiply(factorial(n - 1));
     }
 
     static boolean isPalindrome(int n) {

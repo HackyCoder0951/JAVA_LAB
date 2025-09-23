@@ -5,7 +5,7 @@
 # Q.4 sum of digits of a number ?
 # Q.5 even or odd from the list ?
 # Q.6 find factorial & check palindrome numbers?
-# Q.7 Python Script to draw the following patterns
+# Q.7 Java Program to draw the following patterns
 #      *           *                *
 #     * *          **              **
 #    * * *         ***            ***
