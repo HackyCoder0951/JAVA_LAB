@@ -1,4 +1,4 @@
-package Assignment_05;
+package Assignment_04;
 import java.util.Scanner;
 
 public class Q1_DailyCostCalculator {
