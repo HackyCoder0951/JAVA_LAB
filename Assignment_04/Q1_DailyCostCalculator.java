@@ -2,49 +2,64 @@ package Assignment_04;
 import java.util.Scanner;
 
 public class Q1_DailyCostCalculator {
-    public static void main(String[] args){
-        Scanner input = new Scanner(System.in);
-        System.out.println("WELCOME TO THE PROGRAM WHERE I CALCULATE PER DAY COST INCLUDING JOB LOSS AMOUNT");
 
-        System.out.print("Enter Your College Fees per Semester in Rupees: ");
-        double fees = input.nextDouble();
-
-        System.out.print("Enter per Day Transport cost in Rupees: ");
-        double transport = input.nextDouble();
-
-        System.out.print("Enter how many hours you are learning that day: ");
-        int hours = input.nextInt();
-
-        System.out.print("Enter how many minutes you are learning that day: ");
-        int minutes = input.nextInt();
-
-        System.out.print("Enter your expected monthly job income (if you didn’t attend college): ");
-        double monthlyJobIncome = input.nextDouble();
-
-        // Assumptions
-        int totalSemesterDays = 132;       // 6 months × 22 working days
-        int workingDaysPerMonth = 22;
-
-        double perDayCollegeCost = fees / totalSemesterDays;
-        double dailyJobIncome = monthlyJobIncome / workingDaysPerMonth;
-        double opportunityLoss = dailyJobIncome;
-
-        double totalPerDayCost = perDayCollegeCost + transport + opportunityLoss;
-
-        double totalMinutes = hours * 60 + minutes;
-
-        System.out.println("\n RESULT: ");
-
+    // Method to calculate cost per minute
+    public static double calculateCostPerMinute(double totalCost, double totalMinutes) {
         if (totalMinutes == 0) {
-            System.out.println("Error: Learning time cannot be zero.");
-        } else {
-            double costPerMinute = totalPerDayCost / totalMinutes;
+            return -1; // Error indicator
+        }
+        return totalCost / totalMinutes;
+    }
 
-            System.out.printf("Total cost for the day (College + Transport + Missed Job Income): ₹%.2f\n", totalPerDayCost);
-            System.out.printf("Total time spent: %d hours %d minutes (%.0f minutes)\n", hours, minutes, totalMinutes);
-            System.out.printf("Cost per minute of learning: ₹%.2f\n", costPerMinute);
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("=== LEARNING INVESTMENT ANALYZER ===");
+        System.out.println("This tool calculates your daily investment in education.\n");
+
+        // Input section
+        System.out.print("Enter semester tuition fees (₹): ");
+        double tuition = sc.nextDouble();
+
+        System.out.print("Enter daily travel expense (₹): ");
+        double travelCost = sc.nextDouble();
+
+        System.out.print("Enter study duration (hours): ");
+        int studyHours = sc.nextInt();
+
+        System.out.print("Enter study duration (minutes): ");
+        int studyMins = sc.nextInt();
+
+        System.out.print("Enter potential monthly salary if not studying (₹): ");
+        double altIncome = sc.nextDouble();
+
+        // Constants / assumptions
+        final int semesterWorkingDays = 6 * 22; // 6 months × 22 days
+        final int workDaysInMonth = 22;
+
+        // Calculations
+        double perDayFee = tuition / semesterWorkingDays;
+        double foregoneDailyIncome = altIncome / workDaysInMonth;
+        double totalDailyCost = perDayFee + travelCost + foregoneDailyIncome;
+
+        double totalMinutes = (studyHours * 60) + studyMins;
+        double perMinuteCost = calculateCostPerMinute(totalDailyCost, totalMinutes);
+
+        // Output
+        System.out.println("\n--- DAILY LEARNING REPORT ---");
+        System.out.printf("Fixed Academic Cost (per day): ₹%.2f\n", perDayFee);
+        System.out.printf("Travel Expense: ₹%.2f\n", travelCost);
+        System.out.printf("Opportunity Cost (Missed Salary): ₹%.2f\n", foregoneDailyIncome);
+        System.out.printf("Total Daily Investment: ₹%.2f\n", totalDailyCost);
+
+        if (perMinuteCost == -1) {
+            System.out.println("Error: Study time cannot be zero.");
+        } else {
+            System.out.printf("Total Study Duration: %d hr %d min (%.0f minutes)\n", studyHours, studyMins, totalMinutes);
+            
+            System.out.printf("Learning Cost per Minute: ₹%.2f\n", perMinuteCost);
         }
 
-        input.close();
+        sc.close();
     }
 }
