@@ -1,38 +1,33 @@
 package Assignment_03;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 /**
- * Class representing a simple bank account with basic operations.
+ * BankAccount class: encapsulates account data and provides deposit/withdraw methods.
  */
 class BankAccount {
-    // private fields (encapsulation)
     private String accountHolder;
     private int accountNumber;
     private double balance;
 
-    /**
-     * Constructor to initialize BankAccount object.
-     *
-     * @param accountHolder name of the account holder
-     * @param accountNumber account number (int)
-     * @param balance       initial balance
-     */
     public BankAccount(String accountHolder, int accountNumber, double balance) {
         this.accountHolder = accountHolder;
         this.accountNumber = accountNumber;
         this.balance = balance;
     }
 
-    /* -------------------- getters & setters -------------------- */
-
+    /* Getters and setters */
     public String getAccountHolder() {
         return accountHolder;
     }
 
     public void setAccountHolder(String accountHolder) {
-        this.accountHolder = accountHolder;
+        if (accountHolder != null && !accountHolder.trim().isEmpty()) {
+            this.accountHolder = accountHolder;
+        }
     }
 
     public int getAccountNumber() {
@@ -43,160 +38,301 @@ class BankAccount {
         return balance;
     }
 
-    /* -------------------- deposit & withdraw -------------------- */
-
     /**
-     * Deposit amount to the account. Only positive deposits allowed.
+     * Deposit amount to account (only positive values allowed).
      *
      * @param amount amount to deposit
+     * @return true if deposit successful, false otherwise
      */
-    public void deposit(double amount) {
+    public boolean deposit(double amount) {
         if (amount <= 0) {
-            // Validate amount
-            System.out.println("Deposit amount must be positive!");
-            return;
+            return false;
         }
         balance += amount;
-        System.out.println("Deposited: Rs. " + amount);
+        return true;
     }
 
     /**
-     * Withdraw amount from the account if sufficient funds exist.
+     * Withdraw amount if sufficient balance and positive amount.
      *
      * @param amount amount to withdraw
+     * @return true if withdrawal successful, false otherwise
      */
-    public void withdraw(double amount) {
+    public boolean withdraw(double amount) {
         if (amount <= 0) {
-            System.out.println("Withdrawal amount must be positive!");
-            return;
+            return false;
         }
         if (amount <= balance) {
             balance -= amount;
-            System.out.println("Withdrawn: Rs. " + amount);
+            return true;
         } else {
-            System.out.println("Insufficient balance! Available: Rs. " + balance);
+            return false;
         }
+    }
+
+    @Override
+    public String toString() {
+        return String.format("AccountHolder: %s | AccountNo: %d | Balance: Rs. %.2f",
+                accountHolder, accountNumber, balance);
     }
 }
 
 /**
- * Main class for Q1 — handles user interaction and calls BankAccount methods.
+ * Q1_Bank (enhanced) — menu-driven banking system supporting multiple accounts.
  */
 public class Q1_Bank {
+    private static final Scanner sc = new Scanner(System.in);
+    private static final List<BankAccount> accounts = new ArrayList<>();
+
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+        System.out.println("=== BANKING SYSTEM ===");
 
-        try {
-            System.out.println("=== WELCOME TO THE BANK ACCOUNT PROGRAM ===");
-            // Read account holder name
-            System.out.print("Enter Account Holder Name: ");
-            String name = input.nextLine().trim();
-
-            // Read and validate account number (must be positive integer)
-            int accNo = 0;
-            while (true) {
-                try {
-                    System.out.print("Enter Account Number (numeric): ");
-                    accNo = input.nextInt();
-                    if (accNo <= 0) {
-                        System.out.println("Account number must be a positive integer. Try again.");
-                        continue;
-                    }
-                    break; // valid account number
-                } catch (InputMismatchException ime) {
-                    System.out.println("Invalid input! Please enter numeric digits for account number.");
-                    input.next(); // clear invalid token
-                }
-            }
-
-            // Read and validate initial balance (must be >= 0)
-            double balance = 0.0;
-            while (true) {
-                try {
-                    System.out.print("Enter Initial Balance (Rs.): ");
-                    balance = input.nextDouble();
-                    if (balance < 0) {
-                        System.out.println("Balance cannot be negative. Try again.");
-                        continue;
-                    }
-                    break; // valid balance
-                } catch (InputMismatchException ime) {
-                    System.out.println("Invalid input! Please enter a valid decimal number for balance.");
-                    input.next(); // clear invalid token
-                }
-            }
-
-            // Create account object with user inputs
-            BankAccount account = new BankAccount(name, accNo, balance);
-            System.out.println("\nAccount created successfully!");
-            System.out.println("Account Holder : " + account.getAccountHolder());
-            System.out.println("Account Number : " + account.getAccountNumber());
-            System.out.println("Current Balance: Rs. " + account.getBalance());
-
-            // Offer deposit operation
-            while (true) {
-                System.out.print("\nDo you want to deposit money? (yes/no): ");
-                input.nextLine(); // consume newline left by nextDouble/nextInt
-                String resp = input.nextLine().trim();
-                if (resp.equalsIgnoreCase("yes") || resp.equalsIgnoreCase("y")) {
-                    // deposit amount
-                    while (true) {
-                        try {
-                            System.out.print("Enter amount to deposit (Rs.): ");
-                            double amt = input.nextDouble();
-                            account.deposit(amt);
-                            break;
-                        } catch (InputMismatchException ime) {
-                            System.out.println("Invalid amount! Please enter a number.");
-                            input.next();
-                        }
-                    }
+        boolean exit = false;
+        while (!exit) {
+            printMenu();
+            int choice = readIntInRange("Choose an option (1-6): ", 1, 6);
+            switch (choice) {
+                case 1:
+                    createAccount();
                     break;
-                } else if (resp.equalsIgnoreCase("no") || resp.equalsIgnoreCase("n")) {
+                case 2:
+                    depositToAccount();
                     break;
-                } else {
-                    System.out.println("Please answer yes or no.");
-                }
+                case 3:
+                    withdrawFromAccount();
+                    break;
+                case 4:
+                    showAccountDetails();
+                    break;
+                case 5:
+                    listAllAccounts();
+                    break;
+                case 6:
+                    exit = true;
+                    System.out.println("\nExiting Banking System. Goodbye!");
+                    break;
+                default:
+                    System.out.println("Invalid option. Try again.");
             }
+        }
 
-            // Offer withdrawal operation
-            while (true) {
-                System.out.print("\nDo you want to withdraw money? (yes/no): ");
-                String resp = input.nextLine().trim();
-                if (resp.equalsIgnoreCase("yes") || resp.equalsIgnoreCase("y")) {
-                    // withdraw amount
-                    while (true) {
-                        try {
-                            System.out.print("Enter amount to withdraw (Rs.): ");
-                            double amt = input.nextDouble();
-                            account.withdraw(amt);
-                            break;
-                        } catch (InputMismatchException ime) {
-                            System.out.println("Invalid amount! Please enter a number.");
-                            input.next();
-                        }
-                    }
-                    break;
-                } else if (resp.equalsIgnoreCase("no") || resp.equalsIgnoreCase("n")) {
-                    break;
-                } else {
-                    System.out.println("Please answer yes or no.");
-                }
+        sc.close();
+    }
+
+    /* ---------- Menu & Helpers ---------- */
+
+    private static void printMenu() {
+        System.out.println("\nMenu:");
+        System.out.println("1. Create Account");
+        System.out.println("2. Deposit");
+        System.out.println("3. Withdraw");
+        System.out.println("4. Show Account Details (by account number)");
+        System.out.println("5. List All Accounts");
+        System.out.println("6. Exit");
+    }
+
+    /**
+     * Create a new bank account with validated inputs.
+     * Ensures account number is positive and unique, and initial balance >= 0.
+     */
+    private static void createAccount() {
+        System.out.println("\n-- Create Account --");
+        String name = readNonEmptyString("Enter Account Holder Name: ");
+
+        int accNo;
+        while (true) {
+            accNo = readPositiveInt("Enter Account Number (numeric, positive): ");
+            if (findAccount(accNo) != null) {
+                System.out.println("Account number already exists. Please enter a unique account number.");
+                continue;
             }
+            break;
+        }
 
-            // Final summary
-            System.out.println("\n=== ACCOUNT SUMMARY ===");
-            System.out.println("Account Holder : " + account.getAccountHolder());
-            System.out.println("Account Number : " + account.getAccountNumber());
-            System.out.println("Final Balance  : Rs. " + account.getBalance());
+        double initialBalance = readNonNegativeDouble("Enter Initial Balance (>= 0): ");
+        BankAccount newAcc = new BankAccount(name, accNo, initialBalance);
+        accounts.add(newAcc);
+        System.out.println("Account created successfully.");
+        System.out.println(newAcc);
+    }
 
-        } catch (Exception e) {
-            // Catch any unexpected exceptions to prevent abrupt crash
-            System.out.println("An unexpected error occurred: " + e.getMessage());
-        } finally {
-            // Ensure scanner gets closed
-            input.close();
-            System.out.println("\nThank you for using the Bank Account Program!");
+    /**
+     * Deposit to an existing account after validating the amount.
+     */
+    private static void depositToAccount() {
+        System.out.println("\n-- Deposit --");
+        if (accounts.isEmpty()) {
+            System.out.println("No accounts exist. Create an account first.");
+            return;
+        }
+
+        int accNo = readPositiveInt("Enter Account Number to deposit into: ");
+        BankAccount acc = findAccount(accNo);
+        if (acc == null) {
+            System.out.println("Account not found.");
+            return;
+        }
+
+        double amount = readPositiveDouble("Enter amount to deposit: ");
+        if (acc.deposit(amount)) {
+            System.out.printf("Deposited Rs. %.2f successfully. New Balance: Rs. %.2f%n", amount, acc.getBalance());
+        } else {
+            System.out.println("Deposit failed. Amount must be positive.");
         }
     }
+
+    /**
+     * Withdraw from an existing account, only if sufficient balance exists.
+     */
+    private static void withdrawFromAccount() {
+        System.out.println("\n-- Withdraw --");
+        if (accounts.isEmpty()) {
+            System.out.println("No accounts exist. Create an account first.");
+            return;
+        }
+
+        int accNo = readPositiveInt("Enter Account Number to withdraw from: ");
+        BankAccount acc = findAccount(accNo);
+        if (acc == null) {
+            System.out.println("Account not found.");
+            return;
+        }
+
+        double amount = readPositiveDouble("Enter amount to withdraw: ");
+        if (acc.withdraw(amount)) {
+            System.out.printf("Withdrawn Rs. %.2f successfully. New Balance: Rs. %.2f%n", amount, acc.getBalance());
+        } else {
+            System.out.println("Withdrawal failed. Either amount is invalid or insufficient balance.");
+            System.out.printf("Available balance: Rs. %.2f%n", acc.getBalance());
+        }
+    }
+
+    /**
+     * Show details of a single account by account number.
+     */
+    private static void showAccountDetails() {
+        System.out.println("\n-- Show Account Details --");
+        if (accounts.isEmpty()) {
+            System.out.println("No accounts exist.");
+            return;
+        }
+        int accNo = readPositiveInt("Enter Account Number: ");
+        BankAccount acc = findAccount(accNo);
+        if (acc == null) {
+            System.out.println("Account not found.");
+        } else {
+            System.out.println(acc);
+        }
+    }
+
+    /**
+     * List all accounts (if any).
+     */
+    private static void listAllAccounts() {
+        System.out.println("\n-- All Accounts --");
+        if (accounts.isEmpty()) {
+            System.out.println("No accounts available.");
+            return;
+        }
+        int idx = 1;
+        for (BankAccount a : accounts) {
+            System.out.println((idx++) + ". " + a);
+        }
+    }
+
+    /* ---------- Utility Input Methods ---------- */
+
+    private static BankAccount findAccount(int accountNumber) {
+        for (BankAccount a : accounts) {
+            if (a.getAccountNumber() == accountNumber) {
+                return a;
+            }
+        }
+        return null;
+    }
+
+    // Read an integer within inclusive range
+    private static int readIntInRange(String prompt, int min, int max) {
+        while (true) {
+            System.out.print(prompt);
+            try {
+                int val = sc.nextInt();
+                sc.nextLine(); // consume newline
+                if (val < min || val > max) {
+                    System.out.printf("Please enter a number between %d and %d.%n", min, max);
+                    continue;
                 }
+                return val;
+            } catch (InputMismatchException ime) {
+                System.out.println("Invalid input! Please enter an integer.");
+                sc.nextLine(); // clear invalid token
+            }
+        }
+    }
+
+    private static int readPositiveInt(String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            try {
+                int val = sc.nextInt();
+                sc.nextLine();
+                if (val <= 0) {
+                    System.out.println("Value must be positive. Try again.");
+                    continue;
+                }
+                return val;
+            } catch (InputMismatchException ime) {
+                System.out.println("Invalid input! Please enter an integer.");
+                sc.nextLine();
+            }
+        }
+    }
+
+    private static double readNonNegativeDouble(String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            try {
+                double val = sc.nextDouble();
+                sc.nextLine();
+                if (val < 0) {
+                    System.out.println("Value cannot be negative. Try again.");
+                    continue;
+                }
+                return val;
+            } catch (InputMismatchException ime) {
+                System.out.println("Invalid input! Please enter a number.");
+                sc.nextLine();
+            }
+        }
+    }
+
+    private static double readPositiveDouble(String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            try {
+                double val = sc.nextDouble();
+                sc.nextLine();
+                if (val <= 0) {
+                    System.out.println("Value must be greater than 0. Try again.");
+                    continue;
+                }
+                return val;
+            } catch (InputMismatchException ime) {
+                System.out.println("Invalid input! Please enter a number.");
+                sc.nextLine();
+            }
+        }
+    }
+
+    private static String readNonEmptyString(String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            String s = sc.nextLine().trim();
+            if (s.isEmpty()) {
+                System.out.println("Input cannot be empty. Try again.");
+                continue;
+            }
+            return s;
+        }
+    }
+}
